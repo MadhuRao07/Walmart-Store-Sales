@@ -1,1 +1,1 @@
-# Walmart-Store-Sales
+# Walmart-Store-Sales SQL Project
