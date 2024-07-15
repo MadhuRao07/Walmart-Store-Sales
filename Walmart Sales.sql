@@ -109,3 +109,44 @@ select gender,product_line,count(gender) as total_cnt from sales group by 1,2 or
 
 -- What is the average rating of each product ?
 select product_line , avg(rating)as average_rating from sales group by 1 ;
+
+
+
+ ------------------------------------------------------------------- Customers - -------------------------------------------------------------------------------------------
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ -- Q1. How many unique customer types does the data have?
+ select distinct customer_type from sales;
+ 
+ -- Q2.  How many unique payment methods does the data have?
+SELECT distinct payment_method from sales;
+
+-- Q3. What is the most common customer type?
+select customer_type , count(customer_type)as  common_customer from sales group by 1 order by common_customer desc;
+
+-- Q4.  What is the gender of most of the customers?
+select gender ,count(*) as Most_gender from sales group by 1 ;
+
+-- Q5. What is the gender distribution per branch?
+ select gender,branch ,count(*) from sales group by 1,2;
+ 
+ -- Q6. Which time of the day do customers give most ratings?
+ select * from sales;
+ select time_of_date ,max(rating) from sales group by 1;
+ 
+ -- rating are same for all the time 
+ 
+ -- Q7. Which time of the day do customers give most ratings per branch?
+ select time_of_date,branch ,avg(rating) from sales group by 1,2;
+ 
+
+--  Branch A gives the most rating in afternoon 
+-- Branch C gives the most rating in Evening 
+
+-- Q8. Which day fo the week has the best avg ratings?
+SELECT day_name ,avg(rating)as Average_rating from sales group by 1 order by average_rating desc;
+
+ -- Mon, Tue and Friday are the top best days for good ratings
+ 
+ -- Q9. Which day of the week has the best average ratings per branch?
+SELECT day_name,branch ,avg(rating)as Average_rating from sales group by 1,2 order by average_rating desc;
